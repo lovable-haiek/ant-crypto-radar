@@ -1,55 +1,45 @@
 
 import React from 'react';
-import { Progress } from './ui/progress';
-import { Button } from './ui/button';
+import { Steps, Button } from 'antd';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const steps = ['Account Setup', 'Verification', 'Add Assets', 'Complete'];
 
 const StepBar = () => {
-  const [currentStep, setCurrentStep] = React.useState(1);
-  const progress = (currentStep / (steps.length - 1)) * 100;
+  const [currentStep, setCurrentStep] = React.useState(0);
 
   const handleNext = () => {
-    if (currentStep < steps.length) {
+    if (currentStep < steps.length - 1) {
       setCurrentStep(prev => prev + 1);
     }
   };
 
   const handlePrev = () => {
-    if (currentStep > 1) {
+    if (currentStep > 0) {
       setCurrentStep(prev => prev - 1);
     }
   };
 
   return (
-    <div className="w-full space-y-4 bg-white p-6 rounded-lg shadow-sm">
-      <div className="flex justify-between mb-2">
-        {steps.map((step, index) => (
-          <div
-            key={step}
-            className={`text-sm font-medium ${
-              index + 1 <= currentStep ? 'text-blue-600' : 'text-gray-400'
-            }`}
-          >
-            {step}
-          </div>
-        ))}
-      </div>
-      <Progress value={progress} className="w-full" />
+    <div className="w-full bg-white p-6 rounded-lg shadow-sm space-y-6">
+      <Steps
+        current={currentStep}
+        items={steps.map(title => ({ title }))}
+      />
       <div className="flex justify-between pt-4">
-        <Button
-          variant="outline"
+        <Button 
           onClick={handlePrev}
-          disabled={currentStep === 1}
+          disabled={currentStep === 0}
+          icon={<ChevronLeft className="h-4 w-4" />}
         >
-          <ChevronLeft className="mr-2 h-4 w-4" /> Previous
+          Previous
         </Button>
-        <Button
+        <Button 
+          type="primary"
           onClick={handleNext}
-          disabled={currentStep === steps.length}
+          disabled={currentStep === steps.length - 1}
         >
-          Next <ChevronRight className="ml-2 h-4 w-4" />
+          Next <ChevronRight className="h-4 w-4 ml-2" />
         </Button>
       </div>
     </div>
