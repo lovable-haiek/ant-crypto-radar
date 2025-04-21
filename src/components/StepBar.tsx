@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Steps, Button } from 'antd';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { LeftOutlined, RightOutlined } from '@ant-design/icons';
 
 const steps = ['Account Setup', 'Verification', 'Add Assets', 'Complete'];
 
@@ -30,7 +30,7 @@ const StepBar = () => {
         <Button 
           onClick={handlePrev}
           disabled={currentStep === 0}
-          icon={<ChevronLeft className="h-4 w-4" />}
+          icon={<LeftOutlined />}
         >
           Previous
         </Button>
@@ -39,7 +39,7 @@ const StepBar = () => {
           onClick={handleNext}
           disabled={currentStep === steps.length - 1}
         >
-          Next <ChevronRight className="h-4 w-4 ml-2" />
+          Next <RightOutlined />
         </Button>
       </div>
     </div>
