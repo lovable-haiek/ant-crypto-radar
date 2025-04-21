@@ -5,8 +5,8 @@ import { ArrowUpOutlined, ArrowDownOutlined } from '@ant-design/icons';
 
 const AssetOverview = () => {
   return (
-    <Row gutter={[16, 16]} className="mb-6">
-      <Col xs={24} sm={12} lg={6}>
+    <Row gutter={[16, 16]} className="mb-4 md:mb-6">
+      <Col xs={24} sm={24} md={12} lg={6}>
         <Card>
           <Statistic
             title="Total Portfolio Value"
@@ -16,7 +16,7 @@ const AssetOverview = () => {
           />
         </Card>
       </Col>
-      <Col xs={24} sm={12} lg={6}>
+      <Col xs={24} sm={24} md={12} lg={6}>
         <Card>
           <Statistic
             title="24h Change"
@@ -28,7 +28,7 @@ const AssetOverview = () => {
           />
         </Card>
       </Col>
-      <Col xs={24} sm={12} lg={6}>
+      <Col xs={24} sm={24} md={12} lg={6}>
         <Card>
           <Statistic
             title="Total Assets"
@@ -36,7 +36,7 @@ const AssetOverview = () => {
           />
         </Card>
       </Col>
-      <Col xs={24} sm={12} lg={6}>
+      <Col xs={24} sm={24} md={12} lg={6}>
         <Card>
           <Statistic
             title="Best Performer"

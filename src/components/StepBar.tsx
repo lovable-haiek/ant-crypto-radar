@@ -1,12 +1,14 @@
 
 import React from 'react';
-import { Steps, Button } from 'antd';
+import { Steps, Button, Space } from 'antd';
 import { LeftOutlined, RightOutlined } from '@ant-design/icons';
+import { useIsMobile } from '../hooks/use-mobile';
 
 const steps = ['Account Setup', 'Verification', 'Add Assets', 'Complete'];
 
 const StepBar = () => {
   const [currentStep, setCurrentStep] = React.useState(0);
+  const isMobile = useIsMobile();
 
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
@@ -21,16 +23,19 @@ const StepBar = () => {
   };
 
   return (
-    <div className="w-full bg-white p-6 rounded-lg shadow-sm space-y-6">
+    <div className="w-full bg-white p-4 md:p-6 rounded-lg shadow-sm space-y-6">
       <Steps
         current={currentStep}
         items={steps.map(title => ({ title }))}
+        direction={isMobile ? 'vertical' : 'horizontal'}
+        responsive={false}
       />
-      <div className="flex justify-between pt-4">
+      <div className={`${isMobile ? 'flex flex-col space-y-2' : 'flex justify-between'} pt-4`}>
         <Button 
           onClick={handlePrev}
           disabled={currentStep === 0}
           icon={<LeftOutlined />}
+          block={isMobile}
         >
           Previous
         </Button>
@@ -38,6 +43,7 @@ const StepBar = () => {
           type="primary"
           onClick={handleNext}
           disabled={currentStep === steps.length - 1}
+          block={isMobile}
         >
           Next <RightOutlined />
         </Button>
