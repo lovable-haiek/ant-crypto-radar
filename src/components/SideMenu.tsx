@@ -1,6 +1,5 @@
-
-import React from 'react';
-import { Layout, Menu } from 'antd';
+import React, { useState } from 'react';
+import { Layout, Menu, Button } from 'antd';
 import {
   UserOutlined,
   DashboardOutlined,
@@ -8,6 +7,8 @@ import {
   WalletOutlined,
   TransactionOutlined,
   LineChartOutlined,
+  MenuFoldOutlined,
+  MenuUnfoldOutlined,
 } from '@ant-design/icons';
 
 const { Sider } = Layout;
@@ -82,10 +83,27 @@ const menuItems: MenuItem[] = [
 ];
 
 const SideMenu = () => {
+  const [collapsed, setCollapsed] = useState(false);
+
   return (
-    <Sider width={250} className="bg-white" style={{ height: '100vh' }}>
-      <div className="h-16 flex items-center justify-center">
-        <div className="text-xl font-bold text-blue-600">CryptoTracker</div>
+    <Sider 
+      width={250} 
+      collapsible 
+      collapsed={collapsed}
+      trigger={null}
+      className="bg-white" 
+      style={{ height: '100vh' }}
+    >
+      <div className="h-16 flex items-center justify-between px-4">
+        <div className={`text-xl font-bold text-blue-600 ${collapsed ? 'hidden' : 'block'}`}>
+          CryptoTracker
+        </div>
+        <Button
+          type="text"
+          icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+          onClick={() => setCollapsed(!collapsed)}
+          className="text-gray-600"
+        />
       </div>
       <Menu
         mode="inline"
