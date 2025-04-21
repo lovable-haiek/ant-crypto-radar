@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Layout, Menu, Button } from 'antd';
 import {
@@ -13,22 +14,15 @@ import {
 
 const { Sider } = Layout;
 
-type MenuItem = {
-  key: string;
-  icon?: React.ReactNode;
-  label: string;
-  children?: MenuItem[];
-};
-
-const menuItems: MenuItem[] = [
+const menuItems = [
   {
     key: 'dashboard',
-    icon: <DashboardOutlined />,
+    icon: <DashboardOutlined className="text-gray-600" />,
     label: 'Dashboard',
   },
   {
     key: 'portfolio',
-    icon: <WalletOutlined />,
+    icon: <WalletOutlined className="text-gray-600" />,
     label: 'Portfolio',
     children: [
       {
@@ -43,7 +37,7 @@ const menuItems: MenuItem[] = [
   },
   {
     key: 'transactions',
-    icon: <TransactionOutlined />,
+    icon: <TransactionOutlined className="text-gray-600" />,
     label: 'Transactions',
     children: [
       {
@@ -62,7 +56,7 @@ const menuItems: MenuItem[] = [
   },
   {
     key: 'analytics',
-    icon: <LineChartOutlined />,
+    icon: <LineChartOutlined className="text-gray-600" />,
     label: 'Analytics',
     children: [
       {
@@ -77,7 +71,7 @@ const menuItems: MenuItem[] = [
   },
   {
     key: 'settings',
-    icon: <SettingOutlined />,
+    icon: <SettingOutlined className="text-gray-600" />,
     label: 'Settings',
   },
 ];
@@ -91,25 +85,25 @@ const SideMenu = () => {
       collapsible 
       collapsed={collapsed}
       trigger={null}
-      className="bg-white" 
+      className="bg-white border-r border-gray-100" 
       style={{ height: '100vh' }}
     >
-      <div className="h-16 flex items-center justify-between px-4">
-        <div className={`text-xl font-bold text-blue-600 ${collapsed ? 'hidden' : 'block'}`}>
+      <div className="h-16 flex items-center px-6">
+        <div className={`text-xl font-semibold text-blue-600 ${collapsed ? 'hidden' : 'block'}`}>
           CryptoTracker
         </div>
         <Button
           type="text"
           icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           onClick={() => setCollapsed(!collapsed)}
-          className="text-gray-600"
+          className={`text-gray-600 ${!collapsed && 'ml-auto'}`}
         />
       </div>
       <Menu
         mode="inline"
         defaultSelectedKeys={['dashboard']}
         defaultOpenKeys={['portfolio']}
-        className="h-full border-r"
+        className="border-0"
         items={menuItems}
       />
     </Sider>

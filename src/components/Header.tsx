@@ -7,8 +7,11 @@ const { Header: AntHeader } = Layout;
 
 const Header = () => {
   return (
-    <AntHeader className="flex justify-end items-center bg-white px-6 shadow-md">
-      <Avatar icon={<UserOutlined />} />
+    <AntHeader className="flex justify-end items-center bg-white px-6 border-b border-gray-100">
+      <Avatar 
+        icon={<UserOutlined />} 
+        className="bg-gray-100 cursor-pointer hover:bg-gray-200 transition-colors"
+      />
     </AntHeader>
   );
 };
