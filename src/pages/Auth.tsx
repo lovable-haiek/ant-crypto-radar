@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Layout, Button, Typography, Space, Row, Col, Alert } from 'antd';
-import { GoogleOutlined, ShieldCheckOutlined } from '@ant-design/icons';
+import { GoogleOutlined, SafetyCertificateOutlined } from '@ant-design/icons';
 
 const { Title, Text, Paragraph } = Typography;
 const { Content } = Layout;
@@ -52,7 +52,7 @@ const Auth = () => {
                     Need access? Contact your district's Expanded Learning team
                   </Text>
                   <div className="flex items-center justify-center gap-2 mt-4">
-                    <ShieldCheckOutlined className="text-blue-500" />
+                    <SafetyCertificateOutlined className="text-blue-500" />
                     <Text className="text-xs text-gray-400">Secure & FERPA Compliant</Text>
                   </div>
                 </Space>
@@ -94,4 +94,3 @@ const Auth = () => {
 };
 
 export default Auth;
-
