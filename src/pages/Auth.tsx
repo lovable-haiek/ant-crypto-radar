@@ -2,12 +2,20 @@
 import React from 'react';
 import { Layout, Button, Typography, Space, Row, Col, Alert } from 'antd';
 import { GoogleOutlined, SafetyCertificateOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
-const { Title, Text, Paragraph } = Typography;
+const { Title, Text } = Typography;
 const { Content } = Layout;
 
 const Auth = () => {
+  const navigate = useNavigate();
   const districtName = "San Francisco Unified School District"; // This should be configured per district
+
+  const handleGoogleSignIn = () => {
+    // In a real implementation, this would handle Google authentication
+    // For now, we'll just navigate to the home page
+    navigate('/');
+  };
 
   return (
     <Layout className="h-screen">
@@ -39,9 +47,7 @@ const Auth = () => {
                 size="large"
                 block
                 className="h-12 flex items-center justify-center text-base"
-                onClick={() => {
-                  console.log('Google sign up clicked');
-                }}
+                onClick={handleGoogleSignIn}
               >
                 Sign in with District Email
               </Button>
